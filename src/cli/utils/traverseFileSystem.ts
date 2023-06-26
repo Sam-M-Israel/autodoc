@@ -14,6 +14,7 @@ export const traverseFileSystem = async (
       processFile,
       processFolder,
       ignore,
+      include,
       filePrompt,
       folderPrompt,
       contentType,
@@ -28,13 +29,16 @@ export const traverseFileSystem = async (
       return;
     }
 
+    const shouldInclude = (fileName: string): boolean => {
+      return include.some((pattern) => minimatch(fileName, pattern));
+    };
     const shouldIgnore = (fileName: string): boolean => {
       return ignore.some((pattern) => minimatch(fileName, pattern));
     };
 
     const dfs = async (currentPath: string): Promise<void> => {
       const contents = (await fs.readdir(currentPath)).filter(
-        (fileName) => !shouldIgnore(fileName),
+        (fileName) => !shouldIgnore(fileName) && !shouldInclude(fileName),
       );
 
       await Promise.all(
@@ -51,6 +55,7 @@ export const traverseFileSystem = async (
               folderPath,
               projectName,
               shouldIgnore,
+              shouldInclude,
               folderPrompt,
               contentType,
               targetAudience,

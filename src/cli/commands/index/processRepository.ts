@@ -39,6 +39,7 @@ export const processRepository = async (
     output: outputRoot,
     llms,
     ignore,
+    include,
     filePrompt,
     folderPrompt,
     contentType,
@@ -204,6 +205,7 @@ export const processRepository = async (
     contentType,
     folderPrompt,
     shouldIgnore,
+    shouldInclude,
     linkHosted,
   }): Promise<void> => {
     /**
@@ -336,6 +338,7 @@ export const processRepository = async (
           return Promise.resolve();
         },
         ignore,
+        include,
         filePrompt,
         folderPrompt,
         contentType,
@@ -350,6 +353,7 @@ export const processRepository = async (
           return Promise.resolve();
         },
         ignore,
+        include,
         filePrompt,
         folderPrompt,
         contentType,
@@ -376,6 +380,7 @@ export const processRepository = async (
     projectName,
     processFile,
     ignore,
+    include,
     filePrompt,
     folderPrompt,
     contentType,
@@ -393,6 +398,7 @@ export const processRepository = async (
     projectName,
     processFolder,
     ignore,
+    include,
     filePrompt,
     folderPrompt,
     contentType,

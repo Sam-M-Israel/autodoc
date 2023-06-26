@@ -11,6 +11,7 @@ export type AutodocRepoConfig = {
   output: string;
   llms: LLMModels[];
   ignore: string[];
+  include: string[];
   filePrompt: string;
   folderPrompt: string;
   chatPrompt: string;
@@ -61,6 +62,7 @@ export type ProcessFolderParams = {
   targetAudience: string;
   linkHosted: boolean;
   shouldIgnore: (fileName: string) => boolean;
+  shouldInclude: (fileName: string) => boolean;
 };
 
 export type ProcessFolder = (params: ProcessFolderParams) => Promise<void>;
@@ -71,6 +73,7 @@ export type TraverseFileSystemParams = {
   processFile?: ProcessFile;
   processFolder?: ProcessFolder;
   ignore: string[];
+  include: string[];
   filePrompt: string;
   folderPrompt: string;
   contentType: string;

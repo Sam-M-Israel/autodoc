@@ -1,5 +1,6 @@
 export class APIRateLimit {
   private queue: (() => void)[] = [];
+  private filesWithReturnErrorQueue: (() => void)[] = [];
   private inProgress = 0;
 
   constructor(private maxConcurrentCalls: number = 50) {}

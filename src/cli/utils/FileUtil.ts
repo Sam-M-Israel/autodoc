@@ -21,7 +21,7 @@ export const githubFileUrl = (
   if (linkHosted) {
     return `${githubRoot}/${filePath.substring(inputRoot.length - 1)}`;
   } else {
-    return `${githubRoot}/blob/master/${filePath.substring(
+    return `${githubRoot}/blob/staging/${filePath.substring(
       inputRoot.length - 1,
     )}`;
   }
@@ -36,7 +36,7 @@ export const githubFolderUrl = (
   if (linkHosted) {
     return `${githubRoot}/${folderPath.substring(inputRoot.length - 1)}`;
   } else {
-    return `${githubRoot}/tree/master/${folderPath.substring(
+    return `${githubRoot}/tree/staging/${folderPath.substring(
       inputRoot.length - 1,
     )}`;
   }

@@ -30,6 +30,7 @@ export const makeConfigTemplate = (
       '*.toml',
       '*autodoc*',
     ],
+    include: [],
     filePrompt:
       'Write a detailed technical explanation of what this code does. \n\
       Focus on the high-level purpose of the code and how it may be used in the larger project.\n\

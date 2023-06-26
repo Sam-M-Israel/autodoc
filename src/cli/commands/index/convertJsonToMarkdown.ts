@@ -32,6 +32,7 @@ export const convertJsonToMarkdown = async ({
       return Promise.resolve();
     },
     ignore: [],
+    include: [],
     filePrompt,
     folderPrompt,
     contentType,
@@ -50,7 +51,10 @@ export const convertJsonToMarkdown = async ({
     const content = await fs.readFile(filePath, 'utf-8');
 
     // TODO: Handle error
-    if (!content) return;
+    if (!content) {
+      console.log('Encountered a problem with file', filePath)
+      return
+    }
 
     const markdownFilePath = path
       .join(outputRoot, filePath)
@@ -93,6 +97,7 @@ export const convertJsonToMarkdown = async ({
     projectName,
     processFile,
     ignore: [],
+    include: [],
     filePrompt,
     folderPrompt,
     contentType,
