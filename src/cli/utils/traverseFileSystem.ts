@@ -30,6 +30,7 @@ export const traverseFileSystem = async (
     }
 
     const shouldInclude = (fileName: string): boolean => {
+      if(fileName.includes('.ligo')) console.log('Found a ligo file')
       return include.some((pattern) => minimatch(fileName, pattern));
     };
     const shouldIgnore = (fileName: string): boolean => {
