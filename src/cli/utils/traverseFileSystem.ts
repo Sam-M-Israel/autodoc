@@ -30,16 +30,19 @@ export const traverseFileSystem = async (
     }
 
     const shouldInclude = (fileName: string): boolean => {
-      if(fileName.includes('.ligo')) console.log('Found a ligo file')
+      if (fileName.includes('.ligo')) console.log('Found a ligo file');
       return include.some((pattern) => minimatch(fileName, pattern));
     };
     const shouldIgnore = (fileName: string): boolean => {
-      return ignore.some((pattern) => minimatch(fileName, pattern));
+      return (
+        ignore.some((pattern) => minimatch(fileName, pattern)) &&
+        !shouldInclude(fileName)
+      );
     };
 
     const dfs = async (currentPath: string): Promise<void> => {
       const contents = (await fs.readdir(currentPath)).filter(
-        (fileName) => !shouldIgnore(fileName) && !shouldInclude(fileName),
+        (fileName) => !shouldIgnore(fileName),
       );
 
       await Promise.all(

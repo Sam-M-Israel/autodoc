@@ -216,7 +216,7 @@ export const processRepository = async (
     if (dryRun) return;
 
     const contents = (await fs.readdir(folderPath)).filter(
-      (fileName) => !shouldIgnore(fileName),
+      (fileName) => !shouldIgnore(fileName) || shouldInclude(fileName),
     );
 
     /**
